@@ -1,4 +1,5 @@
-
+//Reset Button Functionality
+const tknBtns = document.querySelectorAll(".tokenItem")
 function resetBtn() {
     location.reload();
 }
@@ -96,24 +97,48 @@ const addMin = document.querySelector(".addMin");
 const displaySet = document.querySelector(".displaySet");
 const subMin = document.querySelector(".subMin");
 const startTimerBtn = document.querySelector(".startTimer");
+const digitTable = document.querySelector(".digitTable");
 
 addMin.addEventListener("click", () => addMinFunc());
 subMin.addEventListener("click", () => subMinFunc());
-let defaultMin = 5;
+startTimerBtn.addEventListener("click", () => {
+    timer();
+});
+let setMin = 5;
 function addMinFunc(){
-    defaultMin++;
+    setMin++;
     updateSetMin();
-    return defaultMin;
+    return setMin;
 }
 function subMinFunc(){
-    defaultMin--;
-    if(defaultMin < 0){
-        defaultMin = 0;
+    setMin--;
+    if(setMin < 0){
+        setMin = 0;
     }
     updateSetMin();
-    return defaultMin;
+    return setMin;
 }
 function updateSetMin(){
-    displaySet.innerHTML = `${defaultMin}:00`;
+    displaySet.innerHTML = `${setMin}:00`;
 }
 updateSetMin();
+
+
+
+let timer = function(){
+    let distance = setMin * 1000 * 60;
+    let timer = setInterval(function() {
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+        digitTable.innerHTML = minutes + "m " + seconds + "s ";
+          
+      
+        if (distance < 0) {
+          clearInterval(timer);
+          digitTable.innerHTML = `Time's up!`
+          //Play sound effect
+        }
+        distance -= 1000;
+      }, 1000);
+}
