@@ -2,7 +2,9 @@
 const tokenSize = document.querySelectorAll(".tokenItem");
 const btnArea = document.querySelector('.btnArea');
 let gridVal = document.querySelector("#tokenSize").value;
-console.log(gridVal)
+let colorVal = document.querySelector("#colorDrop").value;
+console.log(colorVal)
+
 //Reset Button Functionality
 function resetBtn() {
     let circleToken = document.querySelectorAll(".circleItem");
@@ -10,6 +12,8 @@ function resetBtn() {
         circleToken[i].classList.remove("circleItem");
         circleToken[i].style.backgroundColor = "#000";
     }
+    colorVal = document.querySelector("#colorDrop").value;
+
 };
 
 //Generate Button
@@ -93,11 +97,6 @@ Colors.random = function() {
     
 };
 
-function changeColor(_this) {
-    _this.style.backgroundColor = Colors.random();
-    _this.classList.add("circleItem");
-}
-
 //addMin
 //displaySet
 //subMin
@@ -152,3 +151,29 @@ let timer = function(){
         distance -= 1000;
       }, 1000);
 }
+
+//Color Option Functionality
+function changeColor(_this) {
+
+    if (colorVal == "random"){
+        _this.style.backgroundColor = Colors.random()
+    } else if (colorVal == "red") {
+        _this.style.backgroundColor = "#ff0000"
+    } else if (colorVal == "orange") {
+        _this.style.backgroundColor = "#ffa500"
+    } else if (colorVal == "yellow") {
+        _this.style.backgroundColor = "#ffff00"
+    } else if (colorVal == "green") {
+        _this.style.backgroundColor = "#008000"
+    } else if (colorVal == "blue") {
+        _this.style.backgroundColor = "#00ffff"
+    } else if (colorVal == "purple") {
+        _this.style.backgroundColor = "#800080"
+    }
+    _this.classList.add("circleItem")
+};
+
+function updateColor() {
+    colorVal = document.querySelector("#colorDrop").value;
+    resetBtn();
+};
