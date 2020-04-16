@@ -1,5 +1,8 @@
 //Global Variables
 const tokenSize = document.querySelectorAll(".tokenItem");
+const btnArea = document.querySelector('.btnArea');
+let gridVal = document.querySelector("#tokenSize").value;
+console.log(gridVal)
 //Reset Button Functionality
 function resetBtn() {
     let circleToken = document.querySelectorAll(".circleItem");
@@ -9,11 +12,17 @@ function resetBtn() {
     }
 };
 
-tokenSize.forEach(item => item.addEventListener("click", () => {
+//Generate Button
+document.querySelector("#generate").addEventListener("click", () => {
+    gridVal = document.querySelector("#tokenSize").value;
+    resetGrid()
+    makeGrid(gridVal)
+});
+
+/*tokenSize.forEach(item => item.addEventListener("click", () => {
     resetGrid();
     makeGrid(item.value);
-}));
-const btnArea = document.querySelector('.btnArea');
+}));*/
 function resetGrid(){
     btnArea.innerHTML = "";
 }
