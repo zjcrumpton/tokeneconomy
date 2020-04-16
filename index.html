@@ -11,11 +11,9 @@
 </head>
 
 <body>
-
     <div id = "title">Token Board</div>
-    <div class = "btnArea">
-
-        <select id = "tokenSize">
+    <div class = "btnArea"></div>
+    <select id = "tokenSize">
             <option class = "tokenItem" value="1">1</option>
             <option class = "tokenItem" value="2">2</option>
             <option class = "tokenItem" value="3">3</option>
@@ -27,10 +25,20 @@
             <option class = "tokenItem" value="9">9</option>
             <option class = "tokenItem" value="10" selected>10</option>
         </select>
-    
-    </div>
     <div id="flexCont">
-    <button id = "reset" onclick="resetBtn()">Reset</button>
+        <button id = "reset" onclick="resetBtn()">Reset</button>
+    </div>
+    <div class="timerArea">
+        <div class="digitTable">05:00</div>
+        <div class="setMin">
+            <span class = "subMin">-</span>
+            <span class = "displaySet">05:00</span>
+            <span class = "addMin">+</span>
+        </div>
+        
+        <button class="startTimer">Start</button>
+        <button class="pauseTimer">Pause</button>
+        <button class="resetTimer">Reset</button>
     </div>
 </body>
 

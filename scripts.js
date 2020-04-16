@@ -2,9 +2,9 @@
 function resetBtn() {
     location.reload();
 }
-function addEvents(item){
-    item.addEventListener("click", makeGrid(item));
-}
+// function addEvents(item){
+//     item.addEventListener("click", makeGrid(item));
+// }
 let tokenSize = document.querySelectorAll(".tokenItem");
 tokenSize.forEach(item => item.addEventListener("click", () => {
     resetGrid();
@@ -86,3 +86,34 @@ function changeColor(_this) {
     _this.style.borderColor = "transparent";
     _this.style.borderRadius = "100px";
 }
+
+//addMin
+//displaySet
+//subMin
+//startTimer
+
+const addMin = document.querySelector(".addMin");
+const displaySet = document.querySelector(".displaySet");
+const subMin = document.querySelector(".subMin");
+const startTimerBtn = document.querySelector(".startTimer");
+
+addMin.addEventListener("click", () => addMinFunc());
+subMin.addEventListener("click", () => subMinFunc());
+let defaultMin = 5;
+function addMinFunc(){
+    defaultMin++;
+    updateSetMin();
+    return defaultMin;
+}
+function subMinFunc(){
+    defaultMin--;
+    if(defaultMin < 0){
+        defaultMin = 0;
+    }
+    updateSetMin();
+    return defaultMin;
+}
+function updateSetMin(){
+    displaySet.innerHTML = `${defaultMin}:00`;
+}
+updateSetMin();
