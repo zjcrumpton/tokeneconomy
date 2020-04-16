@@ -1,12 +1,14 @@
+//Global Variables
+const tokenSize = document.querySelectorAll(".tokenItem");
 //Reset Button Functionality
-const tknBtns = document.querySelectorAll(".tokenItem")
 function resetBtn() {
-    location.reload();
-}
-// function addEvents(item){
-//     item.addEventListener("click", makeGrid(item));
-// }
-let tokenSize = document.querySelectorAll(".tokenItem");
+    let circleToken = document.querySelectorAll(".circleItem");
+    for (let i = 0; i < circleToken.length; i++) {
+        circleToken[i].classList.remove("circleItem");
+        circleToken[i].style.backgroundColor = "#000";
+    }
+};
+
 tokenSize.forEach(item => item.addEventListener("click", () => {
     resetGrid();
     makeGrid(item.value);
@@ -84,8 +86,7 @@ Colors.random = function() {
 
 function changeColor(_this) {
     _this.style.backgroundColor = Colors.random();
-    _this.style.borderColor = "transparent";
-    _this.style.borderRadius = "100px";
+    _this.classList.add("circleItem");
 }
 
 //addMin
