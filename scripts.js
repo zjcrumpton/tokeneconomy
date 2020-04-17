@@ -1,32 +1,35 @@
-//Global Variables
+//Global Variables and on load declarations
 const tokenSize = document.querySelectorAll(".tokenItem");
 const btnArea = document.querySelector('.btnArea');
 let gridVal = document.querySelector("#tokenSize").value;
 let colorVal = document.querySelector("#colorDrop").value;
-console.log(colorVal)
-
+//Creates default animation choice
+let aniChoice = "none";
+//Keeps track of total amount of tokens possible to earn, default is 10
+let tokenTotal = 10;
+//keeps track of how many tokens have actually been earned, default is 0, no tokens earned at beginning
+let tokenScore = 0;
 //Reset Button Functionality
 function resetBtn() {
+    tokenScore = 0;
+    confetti.stop();
     let circleToken = document.querySelectorAll(".circleItem");
     for (let i = 0; i < circleToken.length; i++) {
+        circleToken[i].removeAttribute("data-attr");
         circleToken[i].classList.remove("circleItem");
         circleToken[i].style.backgroundColor = "#000";
     }
     colorVal = document.querySelector("#colorDrop").value;
 
 };
-
-//Generate Button
+//Generate Button Functionality
 document.querySelector("#generate").addEventListener("click", () => {
     gridVal = document.querySelector("#tokenSize").value;
+    tokenTotal = gridVal
     resetGrid()
     makeGrid(gridVal)
 });
 
-/*tokenSize.forEach(item => item.addEventListener("click", () => {
-    resetGrid();
-    makeGrid(item.value);
-}));*/
 function resetGrid(){
     btnArea.innerHTML = "";
 }
@@ -36,25 +39,55 @@ function makeGrid(size){
         btn.classList.add('btn');
         btnArea.appendChild(btn);
         btn.addEventListener("click", ()=> {
+            gridVal = document.querySelector("#tokenSize").value;
+            if(btn.getAttribute("data-attr") !== "clicked") tokenScore++;
+            btn.setAttribute("data-attr", "clicked");
             changeColor(btn);
+            
+            
+            startAni();
         })
     }
 }
 makeGrid(10);
+
+//Change Animation Button Functionality
+const changeAni = document.querySelector("#aniBtn")
+changeAni.addEventListener("click", ()=> {
+    aniChoice = document.querySelector("#aniSelect").value;
+    console.log(aniChoice)
+})
+
+//Functionality to trigger earned animation upon succesful completion of the token board
+function startAni() {
+    console.log(aniChoice)
+    aniChoice = document.querySelector("#aniSelect").value;
+    console.log(aniChoice)
+    if (tokenScore < tokenTotal) {
+        console.log("You haven't earned all your tokens!!")
+        console.log(`${tokenScore} out of ${tokenTotal}`)
+        
+    } else{
+        if (aniChoice == "none"){
+            console.log("You've Earned All Your Tokens!!")
+            console.log("no animation selected")
+        } else if (aniChoice == "confetti") {
+            confetti.start();
+            console.log("You've Earned All Your Tokens!!")
+            console.log(`${tokenScore} out of ${tokenTotal}`)
+        }
+    }
+};
 
 //Color Generation - Array of Possible Colors
 let Colors = {};
 Colors.names = {
     aqua: "#00ffff",
     azure: "#f0ffff",
-    beige: "#f5f5dc",
-    brown: "#a52a2a",
     cyan: "#00ffff",
     darkblue: "#00008b",
     darkcyan: "#008b8b",
-    darkgrey: "#a9a9a9",
     darkgreen: "#006400",
-    darkkhaki: "#bdb76b",
     darkmagenta: "#8b008b",
     darkolivegreen: "#556b2f",
     darkorange: "#ff8c00",
@@ -66,11 +99,8 @@ Colors.names = {
     gold: "#ffd700",
     green: "#008000",
     indigo: "#4b0082",
-    khaki: "#f0e68c",
-    lightblue: "#add8e6",
     lightcyan: "#e0ffff",
     lightgreen: "#90ee90",
-    lightgrey: "#d3d3d3",
     lightpink: "#ffb6c1",
     lightyellow: "#ffffe0",
     lime: "#00ff00",
@@ -82,7 +112,6 @@ Colors.names = {
     purple: "#800080",
     violet: "#800080",
     red: "#ff0000",
-    silver: "#c0c0c0",
     yellow: "#ffff00"
 };
 
@@ -97,6 +126,8 @@ Colors.random = function() {
     
 };
 
+//Timer Functionality
+
 //addMin
 //displaySet
 //subMin
@@ -107,16 +138,39 @@ const displaySet = document.querySelector(".displaySet");
 const subMin = document.querySelector(".subMin");
 const startTimerBtn = document.querySelector(".startTimer");
 const digitTable = document.querySelector(".digitTable");
+const addSec = document.querySelector(".addSec");
+const displaySetSec = document.querySelector(".displaySetSec");
+const subSec = document.querySelector(".subSec");
 
 addMin.addEventListener("click", () => addMinFunc());
 subMin.addEventListener("click", () => subMinFunc());
+addSec.addEventListener("click", () => addSecFunc());
+subSec.addEventListener("click", () => subSecFunc());
 startTimerBtn.addEventListener("click", () => {
     timer();
 });
-let setMin = 5;
+let setMin = 1;
+let setSec = 1;
 function addMinFunc(){
     setMin++;
     updateSetMin();
+    return setMin;
+}
+function subMinFunc(){
+    setMin--;
+    if(setMin < 0){
+        setMin = 0;
+    }
+    updateSetMin();
+    return setMin;
+}
+function updateSetMin(){
+    displaySet.innerHTML = `${setMin}:00`;
+}
+updateSetMin();
+function addSecFunc(){
+    setMin++;
+    updateSetSec();
     return setMin;
 }
 function subMinFunc(){
@@ -152,9 +206,8 @@ let timer = function(){
       }, 1000);
 }
 
-//Color Option Functionality
+//Color Option Functionality - Checks for selected color and changes token color to the correct selection
 function changeColor(_this) {
-
     if (colorVal == "random"){
         _this.style.backgroundColor = Colors.random()
     } else if (colorVal == "red") {
@@ -173,7 +226,11 @@ function changeColor(_this) {
     _this.classList.add("circleItem")
 };
 
+//Updates the color of future tokens and clears the token board
 function updateColor() {
     colorVal = document.querySelector("#colorDrop").value;
     resetBtn();
 };
+
+//Reward Animation Functionality
+

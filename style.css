@@ -1,3 +1,4 @@
+/*Page Background/Title Styling*/
 body {
     background-color: #05386B;
 }
@@ -69,7 +70,7 @@ body {
     background-color: green;
 }
 
-
+/*Grid Styling for Tokens*/
 .btnArea{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -77,34 +78,12 @@ body {
   margin: 0 auto;
   margin-top: 2em;
 }
-#tokenSize{
-  color: white;
-  height: 20px;
-  width: 85px;
-  justify-self: center;
-  margin-top: 30px;
-  background-color: #5cdb95;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  border-radius: 5px;
-  border-width: 0px;
-  grid-column: 2/3;
-  grid-row: 1/2;
-}
 
+/*Grid Container for Reset and Generate Functions*/
 #gridCont {
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-}
-
-
-/* Timer Style */
-.addMin, .subMin, .displaySet{
-  font-size: 24px;
-  color: white;
-} 
-.addMin, .subMin{
-  cursor: pointer;
 }
 
 .circleItem {
@@ -112,6 +91,7 @@ body {
   border-radius: 100px;
 }
 
+/*Token Input Button Styling*/
 #generate {
   color: white;
   height: 20px;
@@ -128,6 +108,40 @@ body {
 }
 
 #generate:active {
+  background-color: green;
+}
+
+#aniGrid {
+  display: grid;
+  grid-row: 1/2;
+  grid-column: 1/2;
+  margin-top: 8px;
+}
+
+#aniSelect{
+  color: white;
+  height: 20px;
+  width: 85px;
+  justify-self: center;
+  background-color: #5cdb95;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 5px;
+  border-width: 0px;
+}
+
+#aniBtn {
+  color: white;
+  height: 35px;
+  width: 85px;
+  justify-self: center;
+  background-color: #5cdb95;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 5px;
+  border-width: 0px;
+  box-shadow: 0 3px #379683;
+}
+
+#aniBtn:active {
   background-color: green;
 }
 
@@ -163,4 +177,33 @@ body {
 #rightGrid {
   display: grid;
   grid-column: 3/4;
+}
+
+/*Token Amount Dropdown*/
+#tokenSize{
+  color: white;
+  height: 20px;
+  width: 85px;
+  justify-self: center;
+  margin-top: 30px;
+  background-color: #5cdb95;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 5px;
+  border-width: 0px;
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+/*Timer Styling*/
+.timerArea {
+  display: grid;
+  margin-top: 10px;
+}
+
+.addMin, .subMin, .displaySet{
+  font-size: 24px;
+  color: white;
+} 
+.addMin, .subMin{
+  cursor: pointer;
 }

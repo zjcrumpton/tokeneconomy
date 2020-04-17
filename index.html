@@ -29,7 +29,7 @@
         <button id="generate">Generate:</button>
         <button id = "reset" onclick="resetBtn()">Reset</button>
         <div id="rightGrid">
-            <button id="colorBtn" onclick="updateColor()">Change Token Color:</button>
+            <button id="colorBtn" onclick="updateColor()">Change Token Color</button>
             <select id="colorDrop">
                 <option value="random" selected>Random</option>
                 <option value="red">Red</option>
@@ -40,13 +40,25 @@
                 <option value="purple">Purple</option>
             </select>
         </div>
+        <div id="aniGrid">
+            <button id="aniBtn">Change Animation</button>
+            <select id="aniSelect">
+                <option value="none" selected>None</option>
+                <option value="confetti">Confetti</option>
+            </select>
+        </div>
     </div>
     <div class="timerArea">
         <div class="digitTable">05:00</div>
         <div class="setMin">
             <span class = "subMin">-</span>
-            <span class = "displaySet">05:00</span>
+            <span class = "displaySet">0m</span>
             <span class = "addMin">+</span>
+        </div>
+        <div class="setSec">
+            <span class = "subSex">-</span>
+            <span class = "displaySetSec">0s</span>
+            <span class = "addSec">+</span>
         </div>
         
         <button class="startTimer">Start</button>
@@ -54,6 +66,7 @@
         <button class="resetTimer">Reset</button>
     </div>
 </body>
-
+<script src="confetti.js"></script>
 <script src="scripts.js"></script>
+
 </html>
