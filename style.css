@@ -198,6 +198,7 @@ body {
 .timerArea {
   display: grid;
   margin-top: 10px;
+  z-index: 99;
 }
 
 .addMin, .subMin, .displaySet{
@@ -206,4 +207,31 @@ body {
 } 
 .addMin, .subMin{
   cursor: pointer;
+}
+
+/*Fireworks Styling*/
+@keyframes    firework-animation {
+  0% {background-color : #ff8426;}
+  25% {background-color : #fffc84;}
+  50% {background-color : #ff83f4;}
+  75% {background-color : #83b6ff;}
+  100% {background-color : #ff8426;}
+}
+@-webkit-keyframes firework-animation {
+  0% {background-color : #ff8426;}
+  25% {background-color : #fffc84;}
+  50% {background-color : #ff83f4;}
+  75% {background-color : #83b6ff;}
+  100% {background-color : #ff8426;}
+}
+.fireWorkParticle {
+  z-index : 999;
+  position: absolute;
+  height : 5px;
+  width : 5px;
+  border-radius : 5px;
+  animation-name : firework-animation;
+  animation-timing-function : linear;
+  animation-duration : 1s;
+  animation-iteration-count : infinite;
 }

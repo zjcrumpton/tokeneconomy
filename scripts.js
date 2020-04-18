@@ -3,6 +3,7 @@ const tokenSize = document.querySelectorAll(".tokenItem");
 const btnArea = document.querySelector('.btnArea');
 let gridVal = document.querySelector("#tokenSize").value;
 let colorVal = document.querySelector("#colorDrop").value;
+let bodyC = document.querySelector("body");
 //Creates default animation choice
 let aniChoice = "none";
 //Keeps track of total amount of tokens possible to earn, default is 10
@@ -11,6 +12,7 @@ let tokenTotal = 10;
 let tokenScore = 0;
 //Reset Button Functionality
 function resetBtn() {
+    bodyC.style.backgroundColor = "#05386B";
     tokenScore = 0;
     confetti.stop();
     let circleToken = document.querySelectorAll(".circleItem");
@@ -56,7 +58,7 @@ const changeAni = document.querySelector("#aniBtn")
 changeAni.addEventListener("click", ()=> {
     aniChoice = document.querySelector("#aniSelect").value;
     console.log(aniChoice)
-})
+});
 
 //Functionality to trigger earned animation upon succesful completion of the token board
 function startAni() {
@@ -75,6 +77,19 @@ function startAni() {
             confetti.start();
             console.log("You've Earned All Your Tokens!!")
             console.log(`${tokenScore} out of ${tokenTotal}`)
+        } else if (aniChoice == "fireworks") {
+            bodyC.style.backgroundColor = "black";
+            newFireWorkStar(200, 200);
+            newFireWorkStar(400, 400);
+            newFireWorkStar(600, 300);
+            newFireWorkStar(500, 100);
+            newFireWorkStar(800, 500);
+            newFireWorkStar(800, 100);
+            newFireWorkStar(900, 200);
+            newFireWorkStar(1100, 400);
+            newFireWorkStar(1100, 100);
+            newFireWorkStar(100, 1000);
+            newFireWorkStar(1, 1);
         }
     }
 };
@@ -232,5 +247,7 @@ function updateColor() {
     resetBtn();
 };
 
-//Reward Animation Functionality
+//FireWorks Functionality
+//Allows us to dynamically append things to our fireworks board in the HTML
+
 
