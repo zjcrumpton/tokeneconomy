@@ -21,16 +21,17 @@ function resetBtn() {
         circleToken[i].classList.remove("circleItem");
         circleToken[i].style.backgroundColor = "#000";
     }
+    //Updates user token color choice
     colorVal = document.querySelector("#colorDrop").value;
-
-};
-//Generate Button Functionality
-document.querySelector("#generate").addEventListener("click", () => {
+    //Updates user animation choice
+    aniChoice = document.querySelector("#aniSelect").value;
+    //Generate Button Functionality -- Updates Number of Available Tokens
     gridVal = document.querySelector("#tokenSize").value;
     tokenTotal = gridVal
     resetGrid()
     makeGrid(gridVal)
-});
+
+};
 
 function resetGrid(){
     btnArea.innerHTML = "";
@@ -52,13 +53,6 @@ function makeGrid(size){
     }
 }
 makeGrid(10);
-
-//Change Animation Button Functionality
-const changeAni = document.querySelector("#aniBtn")
-changeAni.addEventListener("click", ()=> {
-    aniChoice = document.querySelector("#aniSelect").value;
-    console.log(aniChoice)
-});
 
 //Functionality to trigger earned animation upon succesful completion of the token board
 function startAni() {
@@ -249,5 +243,4 @@ function updateColor() {
 
 //FireWorks Functionality
 //Allows us to dynamically append things to our fireworks board in the HTML
-
 
