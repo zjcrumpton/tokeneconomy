@@ -44,13 +44,26 @@
             </select>
         </div>
         <div id="aniGrid">
-            <button id="aniBtn">Animation:</button>
+            <button id="aniBtn">Celebration:</button>
             <select id="aniSelect">
-                <option value="none" selected>None</option>
-                <option value="confetti">Confetti</option>
+                <option value="none">None</option>
+                <option value="confetti" selected>Confetti</option>
                 <option value="fireworks">Fireworks</option>
             </select>
-        </div>
+		</div>
+		<div id="shapeGrid">
+			<button id="shapeBtn">Shape:</button>
+            <select id="shapeDrop">
+                <option value="circle" selected>Circle</option>
+                <option value="star">Star</option>
+				<option value="coin">Coin</option>
+				<option value="heart">Heart</option>
+				<option value="smiley">Smiley</option>
+				<option value="burst">Burst</option>
+				<option value="alien">Alien</option>
+
+            </select>
+		</div>
     </div>
     <div class="timerArea">
         <div class="digitTable">05:00</div>
@@ -60,7 +73,7 @@
             <span class = "addMin">+</span>
         </div>
         <div class="setSec">
-            <span class = "subSex">-</span>
+            <span class = "subSec">-</span>
             <span class = "displaySetSec">0s</span>
             <span class = "addSec">+</span>
         </div>
@@ -68,7 +81,12 @@
         <button class="startTimer">Start</button>
         <button class="pauseTimer">Pause</button>
         <button class="resetTimer">Reset</button>
-    </div>
+	</div>
+	<div id="pulseH">heart</div>
+	<svg class="heart" viewBox="0 0 32 29.6">
+		<path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+		  c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+	  </svg>
 </body>
 <script src="confetti.js"></script>
 <script src="scripts.js"></script>

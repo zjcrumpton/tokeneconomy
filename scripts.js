@@ -6,10 +6,12 @@ let colorVal = document.querySelector("#colorDrop").value;
 let bodyC = document.querySelector("body");
 //Creates default animation choice
 let aniChoice = "none";
+let shapeChoice = "circle";
 //Keeps track of total amount of tokens possible to earn, default is 10
 let tokenTotal = 10;
 //keeps track of how many tokens have actually been earned, default is 0, no tokens earned at beginning
 let tokenScore = 0;
+
 //Reset Button Functionality
 function resetBtn() {
     bodyC.style.backgroundColor = "#05386B";
@@ -18,7 +20,14 @@ function resetBtn() {
     let circleToken = document.querySelectorAll(".circleItem");
     for (let i = 0; i < circleToken.length; i++) {
         circleToken[i].removeAttribute("data-attr");
+        //Removes previous shape selections
         circleToken[i].classList.remove("circleItem");
+        circleToken[i].classList.remove("starItem");
+        circleToken[i].classList.remove("coinItem");
+        circleToken[i].classList.remove("heartItem");
+        circleToken[i].classList.remove("smileyItem");
+        circleToken[i].classList.remove("burstItem");
+        circleToken[i].classList.remove("alienItem");
         circleToken[i].style.backgroundColor = "#000";
     }
     //Updates user token color choice
@@ -30,7 +39,8 @@ function resetBtn() {
     tokenTotal = gridVal
     resetGrid()
     makeGrid(gridVal)
-
+    //Shape Selection Update
+    shapeChoice = document.querySelector("#shapeDrop").value;
 };
 
 function resetGrid(){
@@ -146,6 +156,7 @@ const addMin = document.querySelector(".addMin");
 const displaySet = document.querySelector(".displaySet");
 const subMin = document.querySelector(".subMin");
 const startTimerBtn = document.querySelector(".startTimer");
+const pauseTimerBtn = document.querySelector(".pauseTimer");
 const digitTable = document.querySelector(".digitTable");
 const addSec = document.querySelector(".addSec");
 const displaySetSec = document.querySelector(".displaySetSec");
@@ -155,11 +166,26 @@ addMin.addEventListener("click", () => addMinFunc());
 subMin.addEventListener("click", () => subMinFunc());
 addSec.addEventListener("click", () => addSecFunc());
 subSec.addEventListener("click", () => subSecFunc());
+let timer = null;
 startTimerBtn.addEventListener("click", () => {
-    timer();
+
+    if(timer == null){
+        timer = startTimer(4, ".digitTable", function() {alert("Done!");});
+    }
+    else{
+        startTimerBtn.addEventListener("click", () => {
+            timer.resume();
+        })
+    }
+    pauseTimerBtn.addEventListener("click", () => {
+        timer.pause();
+    });
+
+    
 });
+
 let setMin = 1;
-let setSec = 1;
+let setSec = 0;
 function addMinFunc(){
     setMin++;
     updateSetMin();
@@ -174,49 +200,63 @@ function subMinFunc(){
     return setMin;
 }
 function updateSetMin(){
-    displaySet.innerHTML = `${setMin}:00`;
+    displaySet.innerHTML = `${setMin}m`;
 }
 updateSetMin();
 function addSecFunc(){
-    setMin++;
-    updateSetSec();
-    return setMin;
-}
-function subMinFunc(){
-    setMin--;
-    if(setMin < 0){
-        setMin = 0;
+    setSec += 10;
+    if(setSec > 60){
+        setSec = 60;
     }
-    updateSetMin();
-    return setMin;
+    updateSetSec();
+    return setSec;
 }
-function updateSetMin(){
-    displaySet.innerHTML = `${setMin}:00`;
+function subSecFunc(){
+    setSec -= 10;
+    if(setSec < 0){
+        setSec = 0;
+    }
+    updateSetSec();
+    return setSec;
+}
+function updateSetSec(){
+    displaySetSec.innerHTML = `${setSec}s`;
 }
 updateSetMin();
 
-
-
-let timer = function(){
-    let distance = setMin * 1000 * 60;
-    let timer = setInterval(function() {
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-        digitTable.innerHTML = minutes + "m " + seconds + "s ";
-          
-      
-        if (distance < 0) {
-          clearInterval(timer);
-          digitTable.innerHTML = `Time's up!`
-          //Play sound effect
+function startTimer(seconds, container, oncomplete) {
+    let startTime, timer, obj, ms = seconds*1000,
+        display = document.querySelector(container);
+    obj = {};
+    obj.resume = function() {
+        startTime = new Date().getTime();
+        timer = setInterval(obj.step,250);
+                            
+    };
+    obj.pause = function() {
+        ms = obj.step();
+        clearInterval(timer);
+    };
+    obj.step = function() {
+        var now = Math.max(0,ms-(new Date().getTime()-startTime)), 
+            m = Math.floor(now/60000), s = Math.floor(now/1000)%60;
+        s = (s < 10 ? "0" : "")+s;
+        display.innerHTML = m+":"+s;
+        if( now == 0) {
+            clearInterval(timer);
+            obj.resume = function() {};
+            if( oncomplete) oncomplete();
         }
-        distance -= 1000;
-      }, 1000);
+        return now;
+    };
+    obj.resume();
+    return obj;
 }
 
-//Color Option Functionality - Checks for selected color and changes token color to the correct selection
+
+//Color Option Functionality - Checks for selected color/shape and changes token color/shape to the correct selection
 function changeColor(_this) {
+    //Updates Color
     if (colorVal == "random"){
         _this.style.backgroundColor = Colors.random()
     } else if (colorVal == "red") {
@@ -232,7 +272,27 @@ function changeColor(_this) {
     } else if (colorVal == "purple") {
         _this.style.backgroundColor = "#800080"
     }
-    _this.classList.add("circleItem")
+
+    //Updates Shape
+    if (shapeChoice == "circle"){
+        _this.classList.add("circleItem")
+    } else if (shapeChoice == "star") {
+        _this.classList.add("starItem")
+    } else if (shapeChoice == "coin") {
+        _this.classList.add("coinItem")
+    } else if (shapeChoice == "heart") {
+        _this.classList.add("heartItem")
+        _this.classList.remove("btn")
+        if (tokenScore == tokenTotal) {
+            _this.classList.add("heartBeat")
+        }
+    } else if (shapeChoice == "smileyItem") {
+        _this.classList.add("smileyItem")
+    } else if (shapeChoice == "burst") {
+        _this.classList.add("burstItem")
+    } else if (shapeChoice == "alien") {
+        _this.classList.add("alienItem")
+    }
 };
 
 //Updates the color of future tokens and clears the token board
@@ -240,7 +300,4 @@ function updateColor() {
     colorVal = document.querySelector("#colorDrop").value;
     resetBtn();
 };
-
-//FireWorks Functionality
-//Allows us to dynamically append things to our fireworks board in the HTML
 
