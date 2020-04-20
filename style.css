@@ -27,6 +27,11 @@ body {
   justify-self: center;
 }
 
+/*Hide Functionality for Image Tokens*/
+.hidden {
+  display: none;
+}
+
 /*Styling for buttons once the reset has occurred.*/
 .btnRst {
   background-color: black;
@@ -261,7 +266,16 @@ animation: pulse 1s ease infinite;
 }
 
 .coinItem {
-  background-image: url(/images/coin.png);
+  display: none;
+}
+
+.coinImg {
+  content: url(/images/coin.png);
+  height: 55px;
+  width: 55px;
+  justify-self: center;
+  border-radius: 50px;
+  margin-top: 5px;
 }
 
 .heartItem {
@@ -269,11 +283,9 @@ animation: pulse 1s ease infinite;
   height: 30px;
   transform: rotate(-45deg);
   width: 30px;
-  margin-left: 85px;
-  margin-top: 10px;
-  margin-bottom: 18px;
-  animation: pulse 1s ease infinite;
-
+  margin-top: 18px;
+  margin-bottom: 12px;
+  justify-self: center;
 }
 
 .heartItem:before,
@@ -297,21 +309,39 @@ animation: pulse 1s ease infinite;
 }
 
 .smileyItem {
-
-}
-
-.burstItem {
+  content: url(/images/emoji.png);
+  height: 55px;
+  width: 55px;
+  justify-self: center;
+  border-radius: 50px;
+  margin-top: 5px;
 }
 
 .alienItem {
-
+  content: url(/images/alien.png);
+  height: 55px;
+  width: 55px;
+  justify-self: center;
+  border-radius: 50px;
+  margin-top: 5px;
 }
 
-#pulseH {
-  <svg class="heart" viewBox="0 0 32 29.6">
-  <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-	c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-</svg>
+.robotItem {
+  content: url(/images/robot.png);
+  height: 55px;
+  width: 55px;
+  justify-self: center;
+  border-radius: 50px;
+  margin-top: 5px;
+}
+
+.butterflyItem {
+  content: url(/images/butterfly.png);
+  height: 55px;
+  width: 55px;
+  justify-self: center;
+  border-radius: 50px;
+  margin-top: 5px;
 }
 
 .heart {
@@ -320,6 +350,7 @@ animation: pulse 1s ease infinite;
   top: 5px;
   width: 50px;
   animation: pulse 1s ease infinite;
+  margin-top: 5px;
 }
 
 /*Token Animations*/

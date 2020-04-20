@@ -4,6 +4,9 @@ const btnArea = document.querySelector('.btnArea');
 let gridVal = document.querySelector("#tokenSize").value;
 let colorVal = document.querySelector("#colorDrop").value;
 let bodyC = document.querySelector("body");
+//Creates Token Images for Non-Dynamic Token Shapes
+let coinImg = document.createElement("div")
+coinImg.classList.add("coinImg");
 //Creates default animation choice
 let aniChoice = "none";
 let shapeChoice = "circle";
@@ -279,19 +282,27 @@ function changeColor(_this) {
     } else if (shapeChoice == "star") {
         _this.classList.add("starItem")
     } else if (shapeChoice == "coin") {
-        _this.classList.add("coinItem")
+        _this.classList.remove("btn")
+        _this.classList.add("coinImg")
+        _this.style.backgroundColor = "transparent"
     } else if (shapeChoice == "heart") {
         _this.classList.add("heartItem")
         _this.classList.remove("btn")
-        if (tokenScore == tokenTotal) {
-            _this.classList.add("heartBeat")
-        }
-    } else if (shapeChoice == "smileyItem") {
+    } else if (shapeChoice == "smiley") {
+        _this.classList.remove("btn")
         _this.classList.add("smileyItem")
-    } else if (shapeChoice == "burst") {
-        _this.classList.add("burstItem")
     } else if (shapeChoice == "alien") {
+        _this.classList.remove("btn")
         _this.classList.add("alienItem")
+        _this.style.backgroundColor = "transparent"
+    } else if (shapeChoice == "robot") {
+        _this.classList.remove("btn")
+        _this.classList.add("robotItem")
+        _this.style.backgroundColor = "transparent"
+    } else if (shapeChoice == "butterfly") {
+        _this.classList.remove("btn")
+        _this.classList.add("butterflyItem")
+        _this.style.backgroundColor = "transparent"
     }
 };
 
