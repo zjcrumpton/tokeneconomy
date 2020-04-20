@@ -270,7 +270,7 @@ animation: pulse 1s ease infinite;
 }
 
 .coinImg {
-  content: url(/images/coin.png);
+  content: url(./images/coin.png);
   height: 55px;
   width: 55px;
   justify-self: center;
@@ -309,7 +309,7 @@ animation: pulse 1s ease infinite;
 }
 
 .smileyItem {
-  content: url(/images/emoji.png);
+  content: url(./images/emoji.png);
   height: 55px;
   width: 55px;
   justify-self: center;
@@ -318,7 +318,7 @@ animation: pulse 1s ease infinite;
 }
 
 .alienItem {
-  content: url(/images/alien.png);
+  content: url(./images/alien.png);
   height: 55px;
   width: 55px;
   justify-self: center;
@@ -327,7 +327,7 @@ animation: pulse 1s ease infinite;
 }
 
 .robotItem {
-  content: url(/images/robot.png);
+  content: url(./images/robot.png);
   height: 55px;
   width: 55px;
   justify-self: center;
@@ -336,7 +336,7 @@ animation: pulse 1s ease infinite;
 }
 
 .butterflyItem {
-  content: url(/images/butterfly.png);
+  content: url(./images/butterfly.png);
   height: 55px;
   width: 55px;
   justify-self: center;
