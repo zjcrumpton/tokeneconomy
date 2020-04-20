@@ -157,6 +157,7 @@ const displaySet = document.querySelector(".displaySet");
 const subMin = document.querySelector(".subMin");
 const startTimerBtn = document.querySelector(".startTimer");
 const pauseTimerBtn = document.querySelector(".pauseTimer");
+const resetTimerBtn = document.querySelector(".resetTimer");
 const digitTable = document.querySelector(".digitTable");
 const addSec = document.querySelector(".addSec");
 const displaySetSec = document.querySelector(".displaySetSec");
@@ -166,23 +167,26 @@ addMin.addEventListener("click", () => addMinFunc());
 subMin.addEventListener("click", () => subMinFunc());
 addSec.addEventListener("click", () => addSecFunc());
 subSec.addEventListener("click", () => subSecFunc());
-let timer = null;
+let timerSet = null;
 startTimerBtn.addEventListener("click", () => {
 
-    if(timer == null){
-        timer = startTimer(4, ".digitTable", function() {alert("Done!");});
+    if(timerSet == null){
+        timerSet = startTimer(4, ".digitTable", function() {alert("Done!");});
+        console.log("in timerSet == null");
     }
-    else{
-        startTimerBtn.addEventListener("click", () => {
-            timer.resume();
-        })
+    else{ 
+        timerSet.resume();
+        console.log("in timerSet.resume();");
     }
-    pauseTimerBtn.addEventListener("click", () => {
-        timer.pause();
-    });
-
-    
 });
+pauseTimerBtn.addEventListener("click", () => {
+    timerSet.pause();
+});
+resetTimerBtn.addEventListener("click", () => {
+    timerSet.reset();
+    updateSetMin();
+    updateSetSec();
+})
 
 let setMin = 1;
 let setSec = 0;
@@ -230,8 +234,7 @@ function startTimer(seconds, container, oncomplete) {
     obj = {};
     obj.resume = function() {
         startTime = new Date().getTime();
-        timer = setInterval(obj.step,250);
-                            
+        timer = setInterval(obj.step,250);                       
     };
     obj.pause = function() {
         ms = obj.step();
@@ -240,14 +243,21 @@ function startTimer(seconds, container, oncomplete) {
     obj.step = function() {
         var now = Math.max(0,ms-(new Date().getTime()-startTime)), 
             m = Math.floor(now/60000), s = Math.floor(now/1000)%60;
+        console.log("now: " + now)
         s = (s < 10 ? "0" : "")+s;
         display.innerHTML = m+":"+s;
         if( now == 0) {
             clearInterval(timer);
+            timerSet = null;
             obj.resume = function() {};
             if( oncomplete) oncomplete();
         }
         return now;
+    };
+    obj.reset = function() {
+        console.log("in reset " + ms)
+        clearInterval(timer);
+        return ms = seconds * 1000;
     };
     obj.resume();
     return obj;
