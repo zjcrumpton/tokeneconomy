@@ -59,8 +59,6 @@ function makeGrid(size){
             if(btn.getAttribute("data-attr") !== "clicked") tokenScore++;
             btn.setAttribute("data-attr", "clicked");
             changeColor(btn);
-            
-            
             startAni();
         })
     }
@@ -97,6 +95,18 @@ function startAni() {
             newFireWorkStar(1100, 100);
             newFireWorkStar(100, 1000);
             newFireWorkStar(1, 1);
+        } else if (aniChoice == "bubbles") {
+            generateBubbles(100, 200)
+            generateBubbles(100, 350)
+            generateBubbles(100, 385)
+
+            generateBubbles(100, 420)
+            generateBubbles(200, 150)
+            generateBubbles(300, 800)
+            generateBubbles(500, 300)
+            generateBubbles(100, 100)
+
+
         }
     }
 };
@@ -311,6 +321,25 @@ function changeColor(_this) {
 //Updates the color of future tokens and clears the token board
 function updateColor() {
     colorVal = document.querySelector("#colorDrop").value;
+
     resetBtn();
 };
+
+//Blowout Button Functionality
+let blowoutBtn = document.querySelector("#blowoutBtn");
+blowoutBtn.addEventListener("click", ()=> {
+    let buttonsNodelist = document.querySelectorAll(".btn");
+    let btnArray = Array.from(buttonsNodelist);
+    let i = 0;
+    (function allIn() {
+        setTimeout(function () {
+            if (i<btnArray.length ) {
+                allIn()
+                changeColor(btnArray[i]);
+                i++;    
+            }   
+        }, 200)
+    })();
+    i = 0;
+});
 

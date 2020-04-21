@@ -176,6 +176,33 @@ body {
   grid-column: 3/4;
 }
 
+#blowoutGrid {
+  display: grid;
+}
+
+#blowoutBtn {
+  background-color: #5CDB95;
+  border: none;
+  color: white;
+  box-shadow: 0 6px #379683;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  height: 40px;
+  width: 130px;
+  justify-self: center;
+  margin-top: 5px;
+}
+
+#blowoutBtn:active {
+  background-color: green;
+}
 /*Token Amount Dropdown*/
 #tokenSize{
   color: white;
@@ -271,8 +298,6 @@ body {
 }
 
 .starItem {
-/*clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-animation: pulse 1s ease infinite;*/
 content: url(./images/star.png);
   height: 55px;
   width: 55px;

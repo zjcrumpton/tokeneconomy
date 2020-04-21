@@ -11,9 +11,8 @@
 </head>
 
 <body>
-	<div class="starItem"></div>
     <!--Fireworks-->
-	<div id = "board"></div>
+	<div id="board"></div>
 	<div class="headerGrid">
 	<div id = "title">Token Board</div>
 	</div>
@@ -44,13 +43,16 @@
                 <option value="blue">Blue</option>
                 <option value="purple">Purple</option>
             </select>
-        </div>
+		</div>
+		<div id="blowoutGrid">
+			<button id="blowoutBtn">BLOWOUT!</button>
+		</div>
         <div id="aniGrid">
             <button id="aniBtn">Celebration:</button>
             <select id="aniSelect">
                 <option value="none">None</option>
                 <option value="confetti" selected>Confetti</option>
-                <option value="fireworks">Fireworks</option>
+				<option value="fireworks">Fireworks</option>
             </select>
 		</div>
 		<div id="shapeGrid">
@@ -230,6 +232,5 @@
         }
         
 </script>
-
 </html>
 
