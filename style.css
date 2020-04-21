@@ -188,9 +188,10 @@ body {
   padding-bottom: 10px;
   border-radius: 5px;
   height: 40px;
-  width: 130px;
+  width: 125px;
   justify-self: center;
   margin-top: 5px;
+  margin-right: 1px;
 }
 
 #blowoutBtn:active {

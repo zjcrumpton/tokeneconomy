@@ -67,9 +67,8 @@ makeGrid(10);
 
 //Functionality to trigger earned animation upon succesful completion of the token board
 function startAni() {
-    console.log(aniChoice)
     aniChoice = document.querySelector("#aniSelect").value;
-    console.log(aniChoice)
+    
     if (tokenScore < tokenTotal) {
         console.log("You haven't earned all your tokens!!")
         console.log(`${tokenScore} out of ${tokenTotal}`)
@@ -257,6 +256,8 @@ function startTimer(seconds, container, oncomplete) {
 
 //Color Option Functionality - Checks for selected color/shape and changes token color/shape to the correct selection
 function changeColor(_this) {
+    //
+    _this.classList.add()
     //Updates Color
     if (colorVal == "random"){
         _this.style.backgroundColor = Colors.random()
