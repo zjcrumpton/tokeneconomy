@@ -95,18 +95,6 @@ function startAni() {
             newFireWorkStar(1100, 100);
             newFireWorkStar(100, 1000);
             newFireWorkStar(1, 1);
-        } else if (aniChoice == "bubbles") {
-            generateBubbles(100, 200)
-            generateBubbles(100, 350)
-            generateBubbles(100, 385)
-
-            generateBubbles(100, 420)
-            generateBubbles(200, 150)
-            generateBubbles(300, 800)
-            generateBubbles(500, 300)
-            generateBubbles(100, 100)
-
-
         }
     }
 };
@@ -338,8 +326,21 @@ blowoutBtn.addEventListener("click", ()=> {
                 changeColor(btnArray[i]);
                 i++;    
             }   
-        }, 200)
+        }, 150)
     })();
+    confetti.start();
+    bodyC.style.backgroundColor = "black";
+            newFireWorkStar(200, 200);
+            newFireWorkStar(400, 400);
+            newFireWorkStar(600, 300);
+            newFireWorkStar(500, 100);
+            newFireWorkStar(800, 500);
+            newFireWorkStar(800, 100);
+            newFireWorkStar(900, 200);
+            newFireWorkStar(1100, 400);
+            newFireWorkStar(1100, 100);
+            newFireWorkStar(100, 1000);
+            newFireWorkStar(1, 1);
     i = 0;
 });
 
