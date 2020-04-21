@@ -153,85 +153,81 @@ Colors.random = function() {
 //startTimer
 
 const addMin = document.querySelector(".addMin");
-const displaySet = document.querySelector(".displaySet");
 const subMin = document.querySelector(".subMin");
+const addSec = document.querySelector(".addSec");
+const subSec = document.querySelector(".subSec");
 const startTimerBtn = document.querySelector(".startTimer");
 const pauseTimerBtn = document.querySelector(".pauseTimer");
+const resetTimerBtn = document.querySelector(".resetTimer");
 const digitTable = document.querySelector(".digitTable");
-const addSec = document.querySelector(".addSec");
-const displaySetSec = document.querySelector(".displaySetSec");
-const subSec = document.querySelector(".subSec");
 
-addMin.addEventListener("click", () => addMinFunc());
-subMin.addEventListener("click", () => subMinFunc());
-addSec.addEventListener("click", () => addSecFunc());
-subSec.addEventListener("click", () => subSecFunc());
-let timer = null;
+addMin.addEventListener("click", () => {addMinFunc(); updataDigitTable(timerSetting);});
+subMin.addEventListener("click", () => {subMinFunc(); updataDigitTable(timerSetting); });
+addSec.addEventListener("click", () => {addSecFunc(); updataDigitTable(timerSetting);});
+subSec.addEventListener("click", () => {subSecFunc(); updataDigitTable(timerSetting);});
+let timerSet = null;
+let setMin = 60000; //60s * 1000ms = minutes
+let setSec = 10000; //1000ms * 10 increment
+let timerSetting = 0;
 startTimerBtn.addEventListener("click", () => {
-
-    if(timer == null){
-        timer = startTimer(4, ".digitTable", function() {alert("Done!");});
+    if(timerSet == null){
+        timerSet = startTimer(timerSetting, ".digitTable", function() {alert("Done!");});
+        console.log("in timerSet == null");
+        startTimerBtn.classList.toggle("hideTimer");
+        pauseTimerBtn.classList.toggle("hideTimer");
     }
-    else{
-        startTimerBtn.addEventListener("click", () => {
-            timer.resume();
-        })
+    else{ 
+        timerSet.resume();
+        console.log("in timerSet.resume();");
+        startTimerBtn.classList.toggle("hideTimer");
+        pauseTimerBtn.classList.toggle("hideTimer");
     }
-    pauseTimerBtn.addEventListener("click", () => {
-        timer.pause();
-    });
-
-    
 });
+pauseTimerBtn.addEventListener("click", () => {
+    timerSet.pause();
+    startTimerBtn.classList.toggle("hideTimer");
+    pauseTimerBtn.classList.toggle("hideTimer");
+});
+resetTimerBtn.addEventListener("click", () => {
+    let btnStatus = startTimerBtn.classList.contains("hideTimer");
+    if(btnStatus){
+        startTimerBtn.classList.toggle("hideTimer");
+        pauseTimerBtn.classList.toggle("hideTimer");
+    }
+    timerSet.reset();
+    updataDigitTable(timerSetting);
+    timerSet = null;
+})
+function updataDigitTable(now){
+    let m = Math.floor(now/60000), s = Math.floor(now/1000)%60;
+    s = (s < 10 ? "0" : "")+s;
+    digitTable.innerHTML = m+":"+s;
+};
 
-let setMin = 1;
-let setSec = 0;
 function addMinFunc(){
-    setMin++;
-    updateSetMin();
-    return setMin;
-}
+    return timerSetting += setMin;
+};
 function subMinFunc(){
-    setMin--;
-    if(setMin < 0){
-        setMin = 0;
-    }
-    updateSetMin();
-    return setMin;
+    timerSetting -= setMin;
+    if(timerSetting < 0) timerSetting = 0;
+    return timerSetting;
 }
-function updateSetMin(){
-    displaySet.innerHTML = `${setMin}m`;
-}
-updateSetMin();
 function addSecFunc(){
-    setSec += 10;
-    if(setSec > 60){
-        setSec = 60;
-    }
-    updateSetSec();
-    return setSec;
+    return timerSetting += setSec;
 }
 function subSecFunc(){
-    setSec -= 10;
-    if(setSec < 0){
-        setSec = 0;
-    }
-    updateSetSec();
-    return setSec;
+    timerSetting -= setSec;
+    if(timerSetting < 0) timerSetting = 0;
+    return timerSetting;
 }
-function updateSetSec(){
-    displaySetSec.innerHTML = `${setSec}s`;
-}
-updateSetMin();
 
-function startTimer(seconds, container, oncomplete) {
-    let startTime, timer, obj, ms = seconds*1000,
+function startTimer(ms, container, oncomplete) {
+    let startTime, timer, obj, original = ms,
         display = document.querySelector(container);
     obj = {};
     obj.resume = function() {
         startTime = new Date().getTime();
-        timer = setInterval(obj.step,250);
-                            
+        timer = setInterval(obj.step,250);                       
     };
     obj.pause = function() {
         ms = obj.step();
@@ -240,6 +236,7 @@ function startTimer(seconds, container, oncomplete) {
     obj.step = function() {
         var now = Math.max(0,ms-(new Date().getTime()-startTime)), 
             m = Math.floor(now/60000), s = Math.floor(now/1000)%60;
+        console.log("now: " + now)
         s = (s < 10 ? "0" : "")+s;
         display.innerHTML = m+":"+s;
         if( now == 0) {
@@ -248,6 +245,12 @@ function startTimer(seconds, container, oncomplete) {
             if( oncomplete) oncomplete();
         }
         return now;
+    };
+    obj.reset = function() {
+        console.log("in reset " + ms)
+        clearInterval(timer);
+        timer = null;
+        return ms = timerSetting;
     };
     obj.resume();
     return obj;
