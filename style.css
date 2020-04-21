@@ -271,9 +271,13 @@ body {
 }
 
 .starItem {
-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-animation: pulse 1s ease infinite;
-
+/*clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+animation: pulse 1s ease infinite;*/
+content: url(./images/star.png);
+  height: 55px;
+  width: 55px;
+  justify-self: center;
+  margin-top: 5px;
 }
 
 .coinItem {
@@ -285,7 +289,6 @@ animation: pulse 1s ease infinite;
   height: 55px;
   width: 55px;
   justify-self: center;
-  border-radius: 50px;
   margin-top: 5px;
 }
 

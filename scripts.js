@@ -281,6 +281,8 @@ function changeColor(_this) {
         _this.classList.add("circleItem")
     } else if (shapeChoice == "star") {
         _this.classList.add("starItem")
+        _this.classList.remove("btn")
+        _this.style.backgroundColor = "transparent"
     } else if (shapeChoice == "coin") {
         _this.classList.remove("btn")
         _this.classList.add("coinImg")
