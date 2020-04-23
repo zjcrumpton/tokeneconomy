@@ -46,7 +46,7 @@
 		</div>
 		<div id="blowoutGrid">
 			<button id="blowoutBtn">BLOWOUT!</button>
-		</div>
+		</div>  
         <div id="aniGrid">
             <button id="aniBtn">Celebration:</button>
             <select id="aniSelect">
@@ -71,8 +71,8 @@
 		</div>
 	</div>
 	<div class = "multiTable">
-		<div class="timerArea">
-			<h1>Activity</h1>
+		<div class="timerArea mainTimer">
+			<h1 id="mainTimeTitle">Activity</h1>
 			<div class="digitTable">0:00</div>
 			<div class="setMin">
 				<span class = "subMin">-</span>
@@ -85,38 +85,37 @@
 				<span class = "addSec">+</span>
 			</div>
 			
-			<button class="startTimer">Start</button>
-			<button class="pauseTimer hideTimer">Pause</button>
+			<button class="startTimer button play"></button>
+			<button class="pauseTimer button pause hideTimer"></button>
 			<button class="resetTimer">Reset</button>
 		</div>
 		<div class="timerArea stopwatch">
-			<h3>Duration</h3>
-			<div class="digitTable">0:00</div>
-			
-			
-			<button class="startTimer">Start</button>
-			<button class="pauseTimer hideTimer">Pause</button>
-			<button class="resetTimer">Reset</button>
+			<h3 id="durationTitle">Duration</h3>
+			<div class="digitTable digitTableDur">0:00</div>
+			<button class="startTimerDur">Start</button>
+			<button class="pauseTimerDur hideTimer">Pause</button>
+			<button class="resetTimerDur">Reset</button>
 		</div>
 		<div class="timerArea intervalClock">
 			<h3>Interval</h3>
-			<div class="digitTable">0:00</div>
+			<div class="digitTable digitTableInt">0:00</div>
 			<div class="setMin">
-				<span class = "subMin">-</span>
-				<span class = "displaySet">min</span>
-				<span class = "addMin">+</span>
+				<span class = "subMin subMinInt">-</span>
+				<span class = "displaySet displaySetInt">min</span>
+				<span class = "addMin addMinInt">+</span>
 			</div>
 			<div class="setSec">
-				<span class = "subSec">-</span>
-				<span class = "displaySetSec">sec</span>
-				<span class = "addSec">+</span>
+				<span class = "subSec subSecInt">-</span>
+				<span class = "displaySetSec displaySetSecInt">sec</span>
+				<span class = "addSec addSecInt">+</span>
 			</div>
 			
-			<button class="startTimer">Start</button>
-			<button class="pauseTimer hideTimer">Pause</button>
-			<button class="resetTimer">Reset</button>
+			<button class="startTimerInt">Start</button>
+			<button class="pauseTimerInt hideTimer">Pause</button>
+			<button class="resetTimerInt">Reset</button>
 		</div>
 	</div>
+	<audio src = "/audio/alarm.mp3" id = "alarmSound" loop></audio>
 </body>
 <script src="confetti.js"></script>
 <script src="scripts.js"></script>

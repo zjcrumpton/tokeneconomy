@@ -1,3 +1,4 @@
+
 /*Page Background/Title Styling*/
 body {
     background-color: #05386B;
@@ -381,19 +382,37 @@ content: url(./images/star.png);
 .timerArea {
   display: grid;
   margin-top: 10px;
-  border: solid 2px white;
   grid-template-columns: repeat(2, 1fr);
   
 
 }
 .timerArea > *{
-  border: solid 2px red;
   justify-self: center;
 }
+.mainTimer{
+  background-color: #fb8647;
+  border-radius: 25px;
+}
+
+#mainTimeTitle {
+  grid-column: 1/3;
+  margin: 0;
+}
+
+#durationTitle {
+  grid-column: 1/3;
+  margin: 0;
+}
+
 .digitTable{
   grid-column: 1/3;
   font-size: 48px;
-  
+  background-color: #a5a3a6;
+  border-radius: 25px;
+  width: 80%;
+  text-align: center;
+  box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.75);
+  font-family: digitalFont;
 }
 .addMin, .subMin, .displaySet, .displaySetSec, .subSec, .addSec{
   font-size: 24px;
@@ -423,4 +442,55 @@ content: url(./images/star.png);
 .intervalClock{
   grid-row: 2/3;
   grid-column: 3/4;
+}
+
+
+.button.play {
+  background-color: transparent;
+  width: 74px;
+  height: 74px;
+  border-style: solid;
+  border-width: 37px;
+  border-color: #202020;
+  border-width: 37px 37px 37px 37px;
+  border-color: red blue green yellow;
+  border-width: 37px 0px 37px 74px;
+  border-color: red blue green yellow;
+  box-sizing: border-box;
+  border-width: 37px 0px 37px 74px;
+  border-color: transparent transparent transparent #202020;
+  scale: 0.75;
+}
+.button.pause {
+  background-color: transparent;
+  width: 74px;
+  height: 74px;
+  border-style: solid;
+  border-width: 37px;
+  border-color: #202020;
+  border-style: double;
+  border-width: 0px 37px 0px 37px;
+  border-width: 0px 0px 0px 37px;
+  border-color: #202020;
+  float: left;
+  scale: 0.75;
+}
+.button {
+  box-sizing: border-box;
+  height: 74px;
+  
+  border-color: transparent transparent transparent #202020;
+  transition: 100ms all ease;
+  will-change: border-width;
+  cursor: pointer;
+
+  // play state
+  border-style: solid;
+  border-width: 37px 0 37px 60px;
+
+  // paused state
+  &.pause {
+    border-style: double;
+    border-width: 0px 0 0px 60px;
+  }
 }
