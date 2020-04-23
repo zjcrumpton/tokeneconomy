@@ -162,7 +162,7 @@ const resetTimerBtn = document.querySelector(".resetTimer");
 const digitTable = document.querySelector(".digitTable");
 
 addMin.addEventListener("click", () => {addMinFunc(); updataDigitTable(timerSetting);});
-subMin.addEventListener("click", () => {subMinFunc(); updataDigitTable(timerSetting); });
+subMin.addEventListener("click", () => {subMinFunc(); updataDigitTable(timerSetting);});
 addSec.addEventListener("click", () => {addSecFunc(); updataDigitTable(timerSetting);});
 subSec.addEventListener("click", () => {subSecFunc(); updataDigitTable(timerSetting);});
 let timerSet = null;
@@ -170,18 +170,22 @@ let setMin = 60000; //60s * 1000ms = minutes
 let setSec = 10000; //1000ms * 10 increment
 let timerSetting = 0;
 startTimerBtn.addEventListener("click", () => {
-    if(timerSet == null){
-        timerSet = startTimer(timerSetting, ".digitTable", function() {alert("Done!");});
-        console.log("in timerSet == null");
-        startTimerBtn.classList.toggle("hideTimer");
-        pauseTimerBtn.classList.toggle("hideTimer");
+    if(timerSetting > 0){
+        if(timerSet == null){
+            timerSet = startTimer(timerSetting, ".digitTable");
+            console.log("in timerSet == null");
+            startTimerBtn.classList.toggle("hideTimer");
+            pauseTimerBtn.classList.toggle("hideTimer");
+            pauseTimerBtn.classList.toggle("paused");
+        }
+        else{ 
+            timerSet.resume();
+            console.log("in timerSet.resume();");
+            startTimerBtn.classList.toggle("hideTimer");
+            pauseTimerBtn.classList.toggle("hideTimer");
+        }
     }
-    else{ 
-        timerSet.resume();
-        console.log("in timerSet.resume();");
-        startTimerBtn.classList.toggle("hideTimer");
-        pauseTimerBtn.classList.toggle("hideTimer");
-    }
+    
 });
 pauseTimerBtn.addEventListener("click", () => {
     timerSet.pause();
@@ -220,9 +224,10 @@ function subSecFunc(){
     if(timerSetting < 0) timerSetting = 0;
     return timerSetting;
 }
-
-function startTimer(ms, container, oncomplete) {
-    let startTime, timer, obj, original = ms,
+//const sound = new Audio("/audio/alarm.mp3");
+const sound = document.querySelector("#alarmSound");
+function startTimer(ms, container) {
+    let alarmSound, startTime, timer, obj, original = ms,
         display = document.querySelector(container);
     obj = {};
     obj.resume = function() {
@@ -242,7 +247,8 @@ function startTimer(ms, container, oncomplete) {
         if( now == 0) {
             clearInterval(timer);
             obj.resume = function() {};
-            if( oncomplete) oncomplete();
+            //obj.playAlarm();
+            sound.play();
         }
         return now;
     };
@@ -250,13 +256,170 @@ function startTimer(ms, container, oncomplete) {
         console.log("in reset " + ms)
         clearInterval(timer);
         timer = null;
+        obj.pauseAudio();
         return ms = timerSetting;
     };
+    
+    obj.pauseAudio = function() { 
+        sound.pause(); 
+    }; 
     obj.resume();
     return obj;
 }
 
 
+
+(function startInterval(){
+    const addMinInt = document.querySelector(".addMinInt");
+    const subMinInt = document.querySelector(".subMinInt");
+    const addSecInt = document.querySelector(".addSecInt");
+    const subSecInt = document.querySelector(".subSecInt");
+    const startTimerBtnInt = document.querySelector(".startTimerInt");
+    const pauseTimerBtnInt = document.querySelector(".pauseTimerInt");
+    const resetTimerBtnInt = document.querySelector(".resetTimerInt");
+    const digitTableInt = document.querySelector(".digitTableInt");
+
+    const beep = new Audio("/audio/beep.mp3");
+    addMinInt.addEventListener("click", () => {addMinFuncInt(); updataDigitTableInt(setInt);});
+    subMinInt.addEventListener("click", () => {subMinFuncInt(); updataDigitTableInt(setInt);});
+    addSecInt.addEventListener("click", () => {addSecFuncInt(); updataDigitTableInt(setInt);});
+    subSecInt.addEventListener("click", () => {subSecFuncInt(); updataDigitTableInt(setInt);});
+    function updataDigitTableInt(now){
+        let m = Math.floor(now/60000), s = Math.floor(now/1000)%60;
+        s = (s < 10 ? "0" : "")+s;
+        digitTableInt.innerHTML = m+":"+s;
+    };
+    let setInt = 0;
+    function addMinFuncInt(){
+        return setInt += setMin;
+    };
+    function subMinFuncInt(){
+        setInt -= setMin;
+        if(setInt < 0) setInt = 0;
+        return setInt;
+    }
+    function addSecFuncInt(){
+        return setInt += setSec;
+    }
+    function subSecFuncInt(){
+        setInt -= setSec;
+        if(setInt < 0) setInt = 0;
+        return setInt;
+    }
+    startTimerBtnInt.addEventListener("click", () => {
+        start();
+        startTimerBtnInt.classList.toggle("hideTimer");
+        pauseTimerBtnInt.classList.toggle("hideTimer");
+    })
+    resetTimerBtnInt.addEventListener('click', stopF);
+    pauseTimerBtnInt.addEventListener('click', pauseF);
+    let pause = false;
+    let s = 0;
+    function start() {
+        // extract the integer value from times
+        let stop = false;
+        // increment seconds
+        
+        updataDigitTableInt(s);
+        // if stop is not pressed
+        if (!stop) {
+            // if pause is not pressed
+            if (!pause) {
+            // increase time
+            s = s + 1000;
+            setTimeout(start, 1000);
+            let now = s, 
+                m = Math.floor(now/60000), sd = Math.floor(now/1000)%60;
+            sd = (sd < 10 ? "0" : "")+sd;
+            digitTableInt.innerHTML = m+":"+s;
+            if(s % setInt == 0){
+                //play beep sound once
+                beep.play();
+            }
+            updataDigitTableInt(s);
+            
+            } else {
+            // toggle pause
+                pause = !pause;
+                startTimerBtnInt.classList.toggle("hideTimer");
+                pauseTimerBtnInt.classList.toggle("hideTimer");
+            }
+        } else {
+            // toggle stop
+            stop = !stop;
+        }
+    }
+    function stopF() {
+        stop = true;
+        pause = true;
+        s = 0;
+        updataDigitTableInt(s);
+    }
+    function pauseF() {
+        pause = true;
+    }
+})();
+
+(function startDur(){
+    const startTimerBtnDur = document.querySelector(".startTimerDur");
+    const pauseTimerBtnDur = document.querySelector(".pauseTimerDur");
+    const resetTimerBtnDur = document.querySelector(".resetTimerDur");
+    const digitTableDur = document.querySelector(".digitTableDur");
+    function updataDigitTableDur(now){
+        let m = Math.floor(now/60000), s = Math.floor(now/1000)%60;
+        s = (s < 10 ? "0" : "")+s;
+        digitTableDur.innerHTML = m+":"+s;
+    };
+    startTimerBtnDur.addEventListener("click", () => {
+        start();
+        startTimerBtnDur.classList.toggle("hideTimer");
+        pauseTimerBtnDur.classList.toggle("hideTimer");
+    })
+    resetTimerBtnDur.addEventListener('click', stopF);
+    pauseTimerBtnDur.addEventListener('click', pauseF);
+    let pause = false;
+    let s = 0;
+    function start() {
+        // extract the integer value from times
+        let stop = false;
+        // increment seconds
+        
+        updataDigitTableDur(s);
+        // if stop is not pressed
+        if (!stop) {
+            // if pause is not pressed
+            if (!pause) {
+            // increase time
+            s = s + 1000;
+            setTimeout(start, 1000);
+            let now = s, 
+                m = Math.floor(now/60000), sd = Math.floor(now/1000)%60;
+            sd = (sd < 10 ? "0" : "")+sd;
+            digitTableDur.innerHTML = m+":"+s;
+            updataDigitTableDur(s);
+            } else {
+            // toggle pause
+                pause = !pause;
+                startTimerBtnDur.classList.toggle("hideTimer");
+                pauseTimerBtnDur.classList.toggle("hideTimer");
+            }
+        } else {
+            // toggle stop
+            stop = !stop;
+        }
+    }
+
+    function stopF() {
+        stop = true;
+        pause = true;
+        s = 0;
+        updataDigitTableDur(s);
+    }
+
+    function pauseF() {
+        pause = true;
+    }
+})();
 //Color Option Functionality - Checks for selected color/shape and changes token color/shape to the correct selection
 function changeColor(_this) {
     //
