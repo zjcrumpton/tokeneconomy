@@ -13,106 +13,112 @@
 <body>
     <!--Fireworks-->
 	<div id="board"></div>
-	<div class="headerGrid">
-	<div id = "title">Token Board</div>
-	</div>
-    <div class = "btnArea"></div>
-    <div id="gridCont">
-        <select id = "tokenSize">
-            <option class = "tokenItem" value="1">1 Token</option>
-            <option class = "tokenItem" value="2">2 Tokens</option>
-            <option class = "tokenItem" value="3">3 Tokens</option>
-            <option class = "tokenItem" value="4">4 Tokens</option>
-            <option class = "tokenItem" value="5">5 Tokens</option>
-            <option class = "tokenItem" value="6">6 Tokens</option>
-            <option class = "tokenItem" value="7">7 Tokens</option>
-            <option class = "tokenItem" value="8">8 Tokens</option>
-            <option class = "tokenItem" value="9">9 Tokens</option>
-            <option class = "tokenItem" value="10" selected>10 Tokens</option>
-        </select>
-        <button id="generate">Tokens:</button>
-        <button id = "reset" onclick="resetBtn()">Clear & Apply</button>
-        <div id="rightGrid">
-            <button id="colorBtn" onclick="updateColor()">Token Color:</button>
-            <select id="colorDrop">
-                <option value="random" selected>Random</option>
-                <option value="red">Red</option>
-                <option value="orange">Orange</option>
-                <option value="yellow">Yellow</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="purple">Purple</option>
-            </select>
+	<div class = "wrapper">
+		<div class="headerGrid">
+			<div id = "title">Token Board</div>
 		</div>
-		<div id="blowoutGrid">
-			<button id="blowoutBtn">BLOWOUT!</button>
-		</div>  
-        <div id="aniGrid">
-            <button id="aniBtn">Celebration:</button>
-            <select id="aniSelect">
-                <option value="none">None</option>
-                <option value="confetti" selected>Confetti</option>
-				<option value="fireworks">Fireworks</option>
-            </select>
-		</div>
-		<div id="shapeGrid">
-			<button id="shapeBtn">Shape:</button>
-            <select id="shapeDrop">
-                <option value="circle" selected>Circle</option>
-                <option value="star">Star</option>
-				<option value="coin">Coin</option>
-				<option value="heart">Heart</option>
-				<option value="smiley">Smiley</option>
-				<option value="alien">Alien</option>
-				<option value="robot">Robot</option>
-				<option value="butterfly">Butterfly</option>
+		<div class = "btnArea"></div>
+		<div id="gridCont">
+			<div class="menuItem" id = "tokenNum">
+				<div class="label" id="generate">Tokens:</div>
+				<select class = "menuDrop" id = "tokenSize">
+					<option class = "tokenItem" value="1">1 Token</option>
+					<option class = "tokenItem" value="2">2 Tokens</option>
+					<option class = "tokenItem" value="3">3 Tokens</option>
+					<option class = "tokenItem" value="4">4 Tokens</option>
+					<option class = "tokenItem" value="5">5 Tokens</option>
+					<option class = "tokenItem" value="6">6 Tokens</option>
+					<option class = "tokenItem" value="7">7 Tokens</option>
+					<option class = "tokenItem" value="8">8 Tokens</option>
+					<option class = "tokenItem" value="9">9 Tokens</option>
+					<option class = "tokenItem" value="10" selected>10 Tokens</option>
+				</select>
+			</div>
+			<div class = "menuItem" id="clearBtn">
+				<button class= "btn22 btn-2 btn-2c"id = "reset" onclick="resetBtn()">Clear <br>&<br> Apply</button>
+			</div>
+			<div class = "menuItem" id="colorGrid">
+				<div class="label" id="colorBtn">Color:</div>
+				<select class = "menuDrop" id="colorDrop">
+					<option value="random" selected>Random</option>
+					<option value="red">Red</option>
+					<option value="orange">Orange</option>
+					<option value="yellow">Yellow</option>
+					<option value="green">Green</option>
+					<option value="blue">Blue</option>
+					<option value="purple">Purple</option>
+				</select>
+			</div>
+			<div class = "menuItem" id="blowoutGrid">
+				<button class= "btn22 btn-2 btn-2c" id="blowoutBtn">BLOWOUT!</button>
+			</div>  
+			<div class = "menuItem" id="aniGrid">
+				<div class="label" id="aniBtn">Effect:</div>
+				<select class = "menuDrop" id="aniSelect">
+					<option value="none">None</option>
+					<option value="confetti" selected>Confetti</option>
+					<option value="fireworks">Fireworks</option>
+				</select>
+			</div>
+			<div class = "menuItem" id="shapeGrid">
+				<div class="label" id="shapeBtn">Shape:</div>
+				<select class = "menuDrop" id="shapeDrop">
+					<option value="circle" selected>Circle</option>
+					<option value="star">Star</option>
+					<option value="coin">Coin</option>
+					<option value="heart">Heart</option>
+					<option value="smiley">Smiley</option>
+					<option value="alien">Alien</option>
+					<option value="robot">Robot</option>
+					<option value="butterfly">Butterfly</option>
 
-            </select>
+				</select>
+			</div>
 		</div>
-	</div>
-	<div class = "multiTable">
-		<div class="timerArea mainTimer">
-			<h1 id="mainTimeTitle">Activity</h1>
-			<div class="digitTable">0:00</div>
-			<div class="setMin">
-				<span class = "subMin">-</span>
-				<span class = "displaySet">min</span>
-				<span class = "addMin">+</span>
+		<div class = "multiTable">
+			<div class="timerArea mainTimer">
+				<h1 id="mainTimeTitle">Activity</h1>
+				<div class="digitTable" id="activity">0:00</div>
+				<div class="setMin">
+					<span class = "subMin">-</span>
+					<span class = "displaySet">min</span>
+					<span class = "addMin">+</span>
+				</div>
+				<div class="setSec">
+					<span class = "subSec">-</span>
+					<span class = "displaySetSec">sec</span>
+					<span class = "addSec">+</span>
+				</div>
+				
+				<button class="startTimer button play"></button>
+				<button class="pauseTimer button pause hideTimer"></button>
+				<img class="resetImg resetTimer" src="./images/reset.png"></img>
 			</div>
-			<div class="setSec">
-				<span class = "subSec">-</span>
-				<span class = "displaySetSec">sec</span>
-				<span class = "addSec">+</span>
+			<div class="timerArea stopwatch">
+				<h3 id="durationTitle">Duration</h3>
+				<div class="digitTable digitTableDur">0:00</div>
+				<button class="startTimerDur button play"></button>
+				<button class="pauseTimerDur button pause hideTimer"></button>
+				<img class="resetImg resetTimerDur" src="./images/reset.png"></img>
 			</div>
-			
-			<button class="startTimer button play"></button>
-			<button class="pauseTimer button pause hideTimer"></button>
-			<button class="resetTimer">Reset</button>
-		</div>
-		<div class="timerArea stopwatch">
-			<h3 id="durationTitle">Duration</h3>
-			<div class="digitTable digitTableDur">0:00</div>
-			<button class="startTimerDur">Start</button>
-			<button class="pauseTimerDur hideTimer">Pause</button>
-			<button class="resetTimerDur">Reset</button>
-		</div>
-		<div class="timerArea intervalClock">
-			<h3>Interval</h3>
-			<div class="digitTable digitTableInt">0:00</div>
-			<div class="setMin">
-				<span class = "subMin subMinInt">-</span>
-				<span class = "displaySet displaySetInt">min</span>
-				<span class = "addMin addMinInt">+</span>
+			<div class="timerArea intervalClock">
+				<h3 id="intervalTitle">Interval</h3>
+				<div class="digitTable digitTableInt">0:00</div>
+				<div class="setMin">
+					<span class = "subMin subMinInt">-</span>
+					<span class = "displaySet displaySetInt">min</span>
+					<span class = "addMin addMinInt">+</span>
+				</div>
+				<div class="setSec">
+					<span class = "subSec subSecInt">-</span>
+					<span class = "displaySetSec displaySetSecInt">sec</span>
+					<span class = "addSec addSecInt">+</span>
+				</div>
+				
+				<button class="startTimerInt button play"></button>
+				<button class="pauseTimerInt button pause hideTimer"></button>
+				<img class="resetImg resetTimerInt" src="./images/reset.png"></img>
 			</div>
-			<div class="setSec">
-				<span class = "subSec subSecInt">-</span>
-				<span class = "displaySetSec displaySetSecInt">sec</span>
-				<span class = "addSec addSecInt">+</span>
-			</div>
-			
-			<button class="startTimerInt">Start</button>
-			<button class="pauseTimerInt hideTimer">Pause</button>
-			<button class="resetTimerInt">Reset</button>
 		</div>
 	</div>
 	<audio src = "/audio/alarm.mp3" id = "alarmSound" loop></audio>

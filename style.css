@@ -61,31 +61,63 @@ body {
   justify-self: center;
 }
 
-/*Styling for the actual reset button*/
-#reset {
-  background-color: #5CDB95;
-  border: none;
-  color: white;
-  box-shadow: 0 6px #379683;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 17px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 5px;
-  height: 45px;
+
+.btn22 {
+	border: none;
+	font-family: inherit;
+	font-size: 17px;
+	color: inherit;
+	background: none;
+	cursor: pointer;
   width: 150px;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+  transition: all 0.3s;
   justify-self: center;
-  margin-top: 0px;
   grid-row: 2/3;
   grid-column: 2/3;
 }
 
-#reset:active {
-    background-color: green;
+.btn22:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
 }
+
+/* Button 2c */
+.btn-2 {
+	background: #cb4e4e;
+	color: #fff;
+	box-shadow: 0 6px #ab3c3c;
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+.btn-2c {
+	border-radius: 5px;
+}
+.btn-2c:hover {
+	box-shadow: 0 4px #ab3c3c;
+	top: 2px;
+}
+.btn-2c:active {
+	box-shadow: 0 0 #ab3c3c;
+	top: 6px;
+}
+
+#blowoutBtn{
+  height: 100%;
+}
+
 
 /*Grid Styling for Tokens*/
 .btnArea{
@@ -96,151 +128,103 @@ body {
   margin-top: 2em;
 }
 
-/*Grid Container for Reset and Generate Functions*/
-#gridCont {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+
+/*Token Menu Styling*/
+@media (min-width: 300px){
+  .wrapper{
+    width: 90%;
+    margin: 0 auto;
+  }
+  #gridCont {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  #tokenNum{
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+  #clearBtn{
+    grid-row: 3/4;
+    grid-column: 2/3;
+  }
+  #colorGrid{
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
+  #blowoutGrid{
+    grid-row: 3/4;
+    grid-column: 1/2;
+  }
+  #aniGrid{
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+  #shapeGrid{
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+}
+@media (min-width: 600px){
+  #gridCont {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #tokenNum{
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+  #clearBtn{
+    grid-row: 2/3;
+    grid-column: 3/5;
+  }
+  #colorGrid{
+    grid-row: 1/2;
+    grid-column: 3/4;
+  }
+  #blowoutGrid{
+    grid-row: 2/3;
+    grid-column: 1/3;
+  }
+  #aniGrid{
+    grid-row: 1/2;
+    grid-column: 4/5;
+  }
+  #shapeGrid{
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+}
+@media (min-width: 1140px){
+  .wrapper{
+    width: 70%;
+    padding-top: 3%;
+  }
 }
 
-/*Token Input Button Styling*/
-#generate {
+.menuItem{
+  justify-self: center;
+}
+.label{
   color: white;
+  background-color: #5cdb95;
   height: 20px;
   width: 85px;
-  justify-self: center;
-  margin-top: 8px;
-  background-color: #5cdb95;
   border-radius: 5px;
-  border-width: 0px;
-  grid-column: 2/3;
-  grid-row: 1/2;
-}
-
-#aniGrid {
-  display: grid;
-  grid-row: 1/2;
-  grid-column: 1/2;
-  margin-top: 8px;
-}
-
-#aniSelect{
-  color: white;
-  height: 20px;
-  width: 75px;
-  justify-self: center;
-  background-color: #379683;
-  border-radius: 5px;
-  border-width: 0px;
-}
-
-#aniBtn {
-  color: white;
-  height: 25px;
-  width: 78px;
-  justify-self: center;
-  background-color: #5cdb95;
-  border-radius: 5px;
-  border-width: 0px;
-}
-
-#colorBtn {
-  color: white;
-  height: 25px;
-  width: 80px;
-  justify-self: center;
-  background-color: #5cdb95;
-  border-radius: 5px;
-  border-width: 0px;
-  justify-self: center;
-  margin: 8px;
-}
-
-#colorDrop {
-  color: white;
-  height: 20px;
-  width: 85px;
-  justify-self: center;
-  background-color: #379683;
-  border-radius: 5px;
-  border-width: 0px;
-}
-
-#rightGrid {
-  display: grid;
-  grid-column: 3/4;
-}
-
-#blowoutGrid {
-  display: grid;
-}
-
-#blowoutBtn {
-  background-color: #5CDB95;
-  border: none;
-  color: white;
-  box-shadow: 0 6px #379683;
-  padding: 20px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 17px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 5px;
-  height: 40px;
-  width: 125px;
-  justify-self: center;
-  margin-top: 5px;
-  margin-right: 1px;
+  margin-bottom: 2px;
 }
-
-#blowoutBtn:active {
-  background-color: green;
-}
-/*Token Amount Dropdown*/
-#tokenSize{
+.menuDrop{
   color: white;
   height: 20px;
   width: 85px;
-  justify-self: center;
-  margin-top: 30px;
-  background-color: #379683;
-  border-radius: 5px;
-  border-width: 0px;
-  grid-column: 2/3;
-  grid-row: 1/2;
-}
-
-
-
-/*Shape Choice Styling*/
-#shapeGrid{
-  grid-row: 2/3;
-  grid-column: 3/4;
-  display: grid;
-  margin-top: 10px;
-}
-
-#shapeDrop {
-  color: white;
-  height: 20px;
-  width: 75px;
-  justify-self: center;
   background-color: #379683;
   border-radius: 5px;
   border-width: 0px;
 }
 
-#shapeBtn {
-  color: white;
-  height: 22px;
-  width: 78px;
-  justify-self: center;
-  background-color: #5cdb95;
-  border-radius: 5px;
-  border-width: 0px;
-}
 
 /*Fireworks Styling*/
 @keyframes    firework-animation {
@@ -275,27 +259,15 @@ body {
   border-color: transparent;
   border-radius: 100px;
 }
-
 .starItem {
-content: url(./images/star.png);
-  height: 55px;
-  width: 55px;
-  justify-self: center;
-  margin-top: 5px;
+  content: url(./images/star.png);
 }
-
 .coinItem {
   display: none;
 }
-
 .coinImg {
   content: url(./images/coin.png);
-  height: 55px;
-  width: 55px;
-  justify-self: center;
-  margin-top: 5px;
 }
-
 .heartItem {
   background-color: red;
   height: 30px;
@@ -305,7 +277,6 @@ content: url(./images/star.png);
   margin-bottom: 12px;
   justify-self: center;
 }
-
 .heartItem:before,
 .heartItem:after {
   content: "";
@@ -325,43 +296,25 @@ content: url(./images/star.png);
   left: 15px;
   top: 0;
 }
-
 .smileyItem {
   content: url(./images/emoji.png);
-  height: 55px;
-  width: 55px;
-  justify-self: center;
-  border-radius: 50px;
-  margin-top: 5px;
 }
-
 .alienItem {
   content: url(./images/alien.png);
-  height: 55px;
-  width: 55px;
-  justify-self: center;
-  border-radius: 50px;
-  margin-top: 5px;
 }
-
 .robotItem {
   content: url(./images/robot.png);
-  height: 55px;
-  width: 55px;
-  justify-self: center;
-  border-radius: 50px;
-  margin-top: 5px;
 }
-
 .butterflyItem {
   content: url(./images/butterfly.png);
+}
+.alienItem, .robotItem, .butterflyItem, .smileyItem, .coinImg, .starItem{
   height: 55px;
   width: 55px;
   justify-self: center;
   border-radius: 50px;
   margin-top: 5px;
 }
-
 .heart {
   fill: red;
   position: relative;
@@ -381,10 +334,7 @@ content: url(./images/star.png);
 /*Timer Styling*/
 .timerArea {
   display: grid;
-  margin-top: 10px;
   grid-template-columns: repeat(2, 1fr);
-  
-
 }
 .timerArea > *{
   justify-self: center;
@@ -393,17 +343,20 @@ content: url(./images/star.png);
   background-color: #fb8647;
   border-radius: 25px;
 }
-
 #mainTimeTitle {
   grid-column: 1/3;
   margin: 0;
 }
-
 #durationTitle {
   grid-column: 1/3;
   margin: 0;
+  color: #a5a3a6;
 }
-
+#intervalTitle {
+  grid-column: 1/3;
+  margin: 0;
+  color: #a5a3a6;
+}
 .digitTable{
   grid-column: 1/3;
   font-size: 48px;
@@ -414,36 +367,58 @@ content: url(./images/star.png);
   box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.75);
   font-family: digitalFont;
 }
+
+#activity {
+  font-size: 90px;
+}
+
 .addMin, .subMin, .displaySet, .displaySetSec, .subSec, .addSec{
   font-size: 24px;
   color: white;
 } 
-.addMin, .subMin, .subSec, .addSec{
+.addMin, .subMin, .subSec, .addSec, .resetImg, .btnRst, select, button{
   cursor: pointer;
 }
 
 .hideTimer{
   display: none;
 }
-.multiTable{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 70%;
-  margin: 0 auto;
-}
-.timerArea{
-  grid-row: 1/3;
-  grid-column: 1/3;
-}
-.stopwatch{
-  grid-row: 1/2;
-  grid-column: 3/4;
-}
-.intervalClock{
-  grid-row: 2/3;
-  grid-column: 3/4;
-}
 
+@media (min-width: 300px){
+  .multiTable{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 70%;
+    margin: 0 auto;
+  }
+  .stopwatch{
+    background-color: #202020;
+    border-radius: 25px;
+  }
+  .intervalClock{
+    background-color: #301935;
+    border-radius: 25px;
+  }
+}
+@media (min-width: 600px){
+  .multiTable{
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
+    grid-gap: 0.5em;
+  }
+  .timerArea{
+    grid-row: 1/3;
+    grid-column: 1/3;
+  }
+  .stopwatch{
+    grid-row: 1/2;
+    grid-column: 3/4;
+  }
+  .intervalClock{
+    grid-row: 2/3;
+    grid-column: 3/4;
+  }
+}
 
 .button.play {
   background-color: transparent;
@@ -458,7 +433,7 @@ content: url(./images/star.png);
   border-color: red blue green yellow;
   box-sizing: border-box;
   border-width: 37px 0px 37px 74px;
-  border-color: transparent transparent transparent #202020;
+  border-color: transparent transparent transparent #000000;
   scale: 0.75;
 }
 .button.pause {
@@ -467,30 +442,40 @@ content: url(./images/star.png);
   height: 74px;
   border-style: solid;
   border-width: 37px;
-  border-color: #202020;
+  border-color: black;
   border-style: double;
   border-width: 0px 37px 0px 37px;
   border-width: 0px 0px 0px 37px;
-  border-color: #202020;
+  border-color: black;
   float: left;
   scale: 0.75;
 }
 .button {
   box-sizing: border-box;
   height: 74px;
-  
   border-color: transparent transparent transparent #202020;
   transition: 100ms all ease;
   will-change: border-width;
   cursor: pointer;
+  margin-left: 25px;
+}
 
-  // play state
+.resetImg {
+  height: 74px;
+  cursor: pointer;
+}
+
+
+
+  /* play state
   border-style: solid;
   border-width: 37px 0 37px 60px;
 
-  // paused state
+   paused state
   &.pause {
     border-style: double;
     border-width: 0px 0 0px 60px;
   }
-}
+} */
+
+
