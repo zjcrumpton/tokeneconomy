@@ -279,7 +279,7 @@ function startTimer(ms, container) {
     const resetTimerBtnInt = document.querySelector(".resetTimerInt");
     const digitTableInt = document.querySelector(".digitTableInt");
 
-    const beep = new Audio("/audio/beep.mp3");
+    const beep = new Audio("./audio/beep.mp3");
     addMinInt.addEventListener("click", () => {addMinFuncInt(); updataDigitTableInt(setInt);});
     subMinInt.addEventListener("click", () => {subMinFuncInt(); updataDigitTableInt(setInt);});
     addSecInt.addEventListener("click", () => {addSecFuncInt(); updataDigitTableInt(setInt);});
