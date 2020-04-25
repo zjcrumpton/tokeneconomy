@@ -1,5 +1,6 @@
 //Global Variables and on load declarations
 const tokenSize = document.querySelectorAll(".tokenItem");
+const multiTable = document.querySelector(".multiTable");
 const btnArea = document.querySelector('.btnArea');
 let gridVal = document.querySelector("#tokenSize").value;
 let colorVal = document.querySelector("#colorDrop").value;
@@ -14,7 +15,16 @@ let shapeChoice = "circle";
 let tokenTotal = 10;
 //keeps track of how many tokens have actually been earned, default is 0, no tokens earned at beginning
 let tokenScore = 0;
+//Toggle Timer Functionality
+const toggleTimerBtn = document.querySelector(".toggleTimer");
+toggleTimerBtn.addEventListener("click", () => {
+    multiTable.classList.toggle("hideTimer");
+    let text = toggleTimerBtn.innerHTML;
+    text == "Show Timer" ? text = "Colapse Timer" : text = "Show Timer";
+    toggleTimerBtn.innerHTML = text;
+    
 
+})
 //Reset Button Functionality
 function resetBtn() {
     bodyC.style.backgroundColor = "#05386B";
@@ -353,6 +363,7 @@ function startTimer(ms, container) {
         stop = true;
         pause = true;
         s = 0;
+        setInt = 0;
         updataDigitTableInt(s);
     }
     function pauseF() {
