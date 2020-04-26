@@ -20,10 +20,8 @@ const toggleTimerBtn = document.querySelector(".toggleTimer");
 toggleTimerBtn.addEventListener("click", () => {
     multiTable.classList.toggle("hideTimer");
     let text = toggleTimerBtn.innerHTML;
-    text == "Show Timer" ? text = "Colapse Timer" : text = "Show Timer";
+    text == "Show Timer" ? text = "Collapse Timer" : text = "Show Timer";
     toggleTimerBtn.innerHTML = text;
-    
-
 })
 //Reset Button Functionality
 function resetBtn() {
