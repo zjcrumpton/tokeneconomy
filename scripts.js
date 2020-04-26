@@ -17,11 +17,17 @@ let tokenTotal = 10;
 let tokenScore = 0;
 //Toggle Timer Functionality
 const toggleTimerBtn = document.querySelector(".toggleTimer");
+const loaded = false;
 toggleTimerBtn.addEventListener("click", () => {
     multiTable.classList.toggle("hideTimer");
     let text = toggleTimerBtn.innerHTML;
     text == "Show Timer" ? text = "Collapse Timer" : text = "Show Timer";
     toggleTimerBtn.innerHTML = text;
+    if(!loaded){
+        sound.play();
+        loaded = true;
+    }
+    
 })
 //Reset Button Functionality
 function resetBtn() {
@@ -256,7 +262,7 @@ function startTimer(ms, container) {
             clearInterval(timer);
             obj.resume = function() {};
             //obj.playAlarm();
-            sound.play();
+            sound.muted = false;
         }
         return now;
     };
@@ -264,13 +270,14 @@ function startTimer(ms, container) {
         console.log("in reset " + ms)
         clearInterval(timer);
         timer = null;
-        obj.pauseAudio();
+        //obj.pauseAudio();
+        sound.muted = true;
         return ms = timerSetting;
     };
     
-    obj.pauseAudio = function() { 
-        sound.pause(); 
-    }; 
+    // obj.pauseAudio = function() { 
+    //     sound.pause(); 
+    // }; 
     obj.resume();
     return obj;
 }
@@ -343,7 +350,11 @@ function startTimer(ms, container) {
             digitTableInt.innerHTML = m+":"+s;
             if(s % setInt == 0){
                 //play beep sound once
-                beep.play();
+                //beep.play();
+                sound.muted = !sound.muted;
+                setTimeout(function(){sound.muted = !sound.muted;}, 300);
+                
+                //sound.mute = !sound.mute;
             }
             updataDigitTableInt(s);
             
