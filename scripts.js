@@ -17,15 +17,15 @@ let tokenTotal = 10;
 let tokenScore = 0;
 //Toggle Timer Functionality
 const toggleTimerBtn = document.querySelector(".toggleTimer");
-const loaded = false;
+const isSoundLoaded = false;
 toggleTimerBtn.addEventListener("click", () => {
     multiTable.classList.toggle("hideTimer");
     let text = toggleTimerBtn.innerHTML;
     text == "Show Timer" ? text = "Collapse Timer" : text = "Show Timer";
     toggleTimerBtn.innerHTML = text;
-    if(!loaded){
+    if(!isSoundLoaded){
         sound.play();
-        loaded = true;
+        isSoundLoaded = true;
     }
     
 })
@@ -261,7 +261,6 @@ function startTimer(ms, container) {
         if( now == 0) {
             clearInterval(timer);
             obj.resume = function() {};
-            //obj.playAlarm();
             sound.muted = false;
         }
         return now;
@@ -274,10 +273,6 @@ function startTimer(ms, container) {
         sound.muted = true;
         return ms = timerSetting;
     };
-    
-    // obj.pauseAudio = function() { 
-    //     sound.pause(); 
-    // }; 
     obj.resume();
     return obj;
 }
@@ -295,7 +290,6 @@ function startTimer(ms, container) {
     const digitTableInt = document.querySelector(".digitTableInt");
 
 
-    const beep = document.querySelector("#beepSound");
     addMinInt.addEventListener("click", () => {addMinFuncInt(); updataDigitTableInt(setInt);});
     subMinInt.addEventListener("click", () => {subMinFuncInt(); updataDigitTableInt(setInt);});
     addSecInt.addEventListener("click", () => {addSecFuncInt(); updataDigitTableInt(setInt);});
@@ -350,11 +344,8 @@ function startTimer(ms, container) {
             digitTableInt.innerHTML = m+":"+s;
             if(s % setInt == 0){
                 //play beep sound once
-                //beep.play();
                 sound.muted = !sound.muted;
                 setTimeout(function(){sound.muted = !sound.muted;}, 300);
-                
-                //sound.mute = !sound.mute;
             }
             updataDigitTableInt(s);
             
