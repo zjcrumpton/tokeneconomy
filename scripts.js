@@ -17,7 +17,7 @@ let tokenTotal = 10;
 let tokenScore = 0;
 //Toggle Timer Functionality
 const toggleTimerBtn = document.querySelector(".toggleTimer");
-const isSoundLoaded = false;
+let isSoundLoaded = false;
 toggleTimerBtn.addEventListener("click", () => {
     multiTable.classList.toggle("hideTimer");
     let text = toggleTimerBtn.innerHTML;
@@ -27,7 +27,17 @@ toggleTimerBtn.addEventListener("click", () => {
         sound.play();
         isSoundLoaded = true;
     }
-    
+})
+const toggleMenuBtn = document.querySelector(".toggleMenu");
+const menuItems = document.querySelectorAll(".hideMenuItem");
+toggleMenuBtn.addEventListener("click", () => {
+    menuItems.forEach(elem => {
+        elem.classList.toggle("hideTimer");
+    })
+    let text = toggleMenuBtn.innerHTML;
+    text == "Edit Tokens" ? text = "Hide Menu" : text = "Edit Tokens";
+    toggleMenuBtn.innerHTML = text;
+
 })
 //Reset Button Functionality
 function resetBtn() {

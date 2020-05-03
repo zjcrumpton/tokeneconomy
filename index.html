@@ -18,8 +18,11 @@
 			<div id = "title">Token Board</div>
 		</div>
 		<div class = "btnArea"></div>
+		<div>
+			<div class = "toggleMenu">Hide Menu</div> 
+		</div>
 		<div id="gridCont">
-			<div class="menuItem" id = "tokenNum">
+			<div class="menuItem hideMenuItem" id = "tokenNum">
 				<div class="label" id="generate">Tokens:</div>
 				<select class = "menuDrop" id = "tokenSize">
 					<option class = "tokenItem" value="1">1 Token</option>
@@ -37,7 +40,7 @@
 			<div class = "menuItem" id="clearBtn">
 				<button class= "btn22 btn-2 btn-2c"id = "reset" onclick="resetBtn()">Clear <br>&<br> Apply</button>
 			</div>
-			<div class = "menuItem" id="colorGrid">
+			<div class = "menuItem hideMenuItem" id="colorGrid">
 				<div class="label" id="colorBtn">Color:</div>
 				<select class = "menuDrop" id="colorDrop">
 					<option value="random" selected>Random</option>
@@ -52,7 +55,7 @@
 			<div class = "menuItem" id="blowoutGrid">
 				<button class= "btn22 btn-2 btn-2c" id="blowoutBtn">BLOWOUT!</button>
 			</div>  
-			<div class = "menuItem" id="aniGrid">
+			<div class = "menuItem hideMenuItem" id="aniGrid">
 				<div class="label" id="aniBtn">Effect:</div>
 				<select class = "menuDrop" id="aniSelect">
 					<option value="none">None</option>
@@ -60,7 +63,7 @@
 					<option value="fireworks">Fireworks</option>
 				</select>
 			</div>
-			<div class = "menuItem" id="shapeGrid">
+			<div class = "menuItem hideMenuItem" id="shapeGrid">
 				<div class="label" id="shapeBtn">Shape:</div>
 				<select class = "menuDrop" id="shapeDrop">
 					<option value="circle" selected>Circle</option>
@@ -125,7 +128,8 @@
 		</div>
 	</div>
 	<footer class = "footer">
-		<div class = "footerContent">&copy; 2020 Made with love by TheraPigeon</div>
+		<div class = "footerContent">&copy; 2020 Made with love by <a href = "http://therapigeon.com" target="_blank">TheraPigeon</a></div>
+		<div class = "footerLogo"><img src = "./images/logo32.png"></div>
 	</footer>
 	<audio src = "./audio/alarm.mp3" id = "alarmSound" loop muted></audio>
 </body>

@@ -1,4 +1,3 @@
-
 /*Page Background/Title Styling*/
 html{
   height: 100%;
@@ -503,7 +502,6 @@ h3{
   /* play state
   border-style: solid;
   border-width: 37px 0 37px 60px;
-
    paused state
   &.pause {
     border-style: double;
@@ -535,4 +533,11 @@ h3{
   display: flex;
   align-items: center;
   justify-content: center;
+}  
+a, a:visited, a:focus{
+  color: inherit;
+  text-decoration: none;
+}
+.footerContent > a:hover{
+  text-decoration: underline;
 }
