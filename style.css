@@ -20,6 +20,43 @@ h3{
   font-size: 1.2em;
 }
 
+.toggleMenu {
+	font-size: 17px;
+	cursor: pointer;
+  width: 45px;
+	letter-spacing: 1px;
+	font-weight: 700;
+  transition: all 0.3s;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 18px;
+}
+
+
+
+.toggleTimer {
+  border: none;
+	font-family: inherit;
+	font-size: 17px;
+	color: white;
+	background: none;
+	cursor: pointer;
+  width: 121px;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	-webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  margin: auto auto;
+  margin-top: 45px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+
 /*Header Grid and Items*/
 #title {
     color: white;
@@ -422,9 +459,10 @@ h3{
   }
   .toggleTimer{
     color: white;
-    display: inline-block;
-    margin-left: 10px;
-    padding: 10px;
+    display: flex;
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* padding: 10px; */
   }
   .toggleTimer:hover{
     text-shadow: 0px 0px 1px #5CDB95;
@@ -446,9 +484,6 @@ h3{
   .intervalClock{
     grid-row: 2/3;
     grid-column: 3/4;
-  }
-  .toggleTimer{
-    margin-left: 100px;
   }
 }
 

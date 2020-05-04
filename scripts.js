@@ -35,7 +35,7 @@ toggleMenuBtn.addEventListener("click", () => {
         elem.classList.toggle("hideTimer");
     })
     let text = toggleMenuBtn.innerHTML;
-    text == "Edit Tokens" ? text = "Hide Menu" : text = "Edit Tokens";
+    text == "EDIT" ? text = "HIDE" : text = "EDIT";
     toggleMenuBtn.innerHTML = text;
 
 })
