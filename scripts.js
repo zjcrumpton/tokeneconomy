@@ -37,7 +37,6 @@ toggleMenuBtn.addEventListener("click", () => {
     let text = toggleMenuBtn.innerHTML;
     text == "EDIT" ? text = "HIDE" : text = "EDIT";
     toggleMenuBtn.innerHTML = text;
-
 })
 //Reset Button Functionality
 function resetBtn() {
