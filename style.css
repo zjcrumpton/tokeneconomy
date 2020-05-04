@@ -581,3 +581,7 @@ a, a:visited, a:focus{
 .footerContent > a:hover{
   text-decoration: underline;
 }
+
+.share {
+  margin-left: 8px;
+}
