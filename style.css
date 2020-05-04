@@ -457,6 +457,7 @@ h3{
   .intervalClock{
     background-color: #301935;
     border-radius: 25px;
+    margin-bottom: 10px;
   }
   .toggleTimer{
     color: white;
