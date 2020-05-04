@@ -506,6 +506,7 @@ h3{
   border-color: transparent transparent transparent #000000;
   scale: 0.75;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 .button.pause {
   background-color: transparent;
@@ -583,5 +584,5 @@ a, a:visited, a:focus{
 }
 
 .share {
-  margin-left: 8px;
+  margin-left: 10px;
 }
